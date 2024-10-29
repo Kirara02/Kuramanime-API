@@ -9,6 +9,7 @@ route.get("/", (req, res) => {
             getCompletedAnime: "/api/v1/completed/:page",
             getAnimeList: "/api/v1/anime",
             getAnimeDetail: "/api/v1/anime/:id/:name",
+            getEpisodeDetail: "/api/v1/anime/:id/:name/episode/:no"
         },
         documentation: "https://github.com/Kirara02/Kuramanime-API"
     })
