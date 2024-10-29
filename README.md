@@ -17,6 +17,10 @@ this is my first time web scraping, all this data API from [Kuramanime](https://
     ```
 4. visit http://localhost:8000 or another port if you changed it
 
+# Documentation
+__API__ __PATH__ = https://kuramanime-api.vercel.app/
+</br>__ApI__ Version = `v1.0`
+
 ### Get Ongoing Anime
 Fetch a list of ongoing anime.
 
