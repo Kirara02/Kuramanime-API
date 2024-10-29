@@ -59,3 +59,19 @@ Fetch detailed information about a specific anime.
 /api/v1/anime/3149/kimi-wa-meido-sama
 ```
 
+### Get Episode Detail
+Fetch details for a specific episode of an anime, with options for choosing video server.
+
+- **Endpoint**: `/api/v1/anime/:id/:name/episode/:no`
+- **Parameters**:
+   - `[id]` - The unique identifier for the anime.
+   - `[name]` - The name of the anime.
+   - `[no]` - The episode number.
+- **Query Parameters**:
+   - `server` (optional): Choose from one of the available servers `[kuramadrive, archive, archive-v2, filelions, filemoon, mega, streamtape]`.
+      - Default is `kuramadrive`.
+- **Example**:
+    ```
+    /api/v1/anime/3138/dandadan/episode/1?server=mega
+    ```
+

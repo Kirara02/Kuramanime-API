@@ -12,7 +12,7 @@
     "express"
   ],
   "author": "Kirara Bernstein",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^1.7.7",
     "cheerio": "^1.0.0",

@@ -229,7 +229,59 @@ const Services = {
                 episode_list: []
             })
         }
-    }
+    },
+    getEpisodeDetail: async(req, res) => {
+        const id = req.params.id
+        const name = req.params.name
+        const no = req.params.no
+        // [kuramadrive, archive, archive-v2, filelions, filemoon, mega, streamtape]
+        const server = req.query.server ?? 'kuramadrive'
+        let url = `${BASEURL}/anime/${id}/${name}/episode/${no}?ZUWkUKnZTncFehk=Cx9RYfp10v&yAYKQ7YKMtEMUif=${server}&page=1`
+        try {
+            const response = await service.fetchService(url, res);
+            if(response.status === 200){
+                const $ = cheerio.load(response.data)
+                const episodeElement = $('.breadcrumb-option')
+                const episodeDetailElement = $('.anime-details')
+
+                let data = {}
+                let video_urls = []
+
+                const fullText = episodeElement.find('.breadcrumb__links__v2 > span').text().trim();
+                const dateMatch = fullText.match(/(?:Minggu|Senin|Selasa|Rabu|Kamis|Jumat|Sabtu), \d{2} [A-Za-z]{3} \d{4}, \d{2}:\d{2}:\d{2} WIB/);
+
+                if(server === 'mega' || server === 'streamtape' || server === 'filemoon' || server === 'filelions'){
+                    let url
+                    url = episodeDetailElement.find('#animeVideoPlayer').find('.iframe-container iframe').attr('src')
+                    video_urls.push(url)
+                }else{
+                    episodeDetailElement.find("#animeVideoPlayer > .mb-3 > .video-content > #player > source").each((index, el) => {
+                        video_urls[index] = $(el).attr('src')
+                    })
+                }
+
+
+                data.date = dateMatch ? dateMatch[0] : "Date not found";
+                data.server = server
+                data.video_urls = video_urls
+
+
+                return res.status(200).send({
+                    status: true,
+                    message: 'Success',
+                    data
+                })
+            }
+
+            return res.send({
+                status: false,
+                message: response.message
+            })
+        } catch (err) {
+            console.log(err);
+            res.send(err)
+        }
+    },
 }
 
 module.exports = Services
