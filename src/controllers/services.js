@@ -8,7 +8,7 @@ const Services = {
         let url = page === 1 ? `${BASEURL}/quick/ongoing?order_by=updated&page=1` : `${BASEURL}/quick/ongoing?order_by=updated&page=${page}`
         try {
             const response = await service.fetchService(url, res)
-            if (response.status === 200) {
+            if (response && response.status === 200) {
                 const $ = cheerio.load(response.data)
                 const element = $(".product-page")
 
@@ -57,7 +57,7 @@ const Services = {
         let url = page === 1 ? `${BASEURL}/quick/finished?order_by=ascending&page=1` : `${BASEURL}/quick/finished?order_by=ascending&page=${page}`
         try {
             const response = await service.fetchService(url, res)
-            if (response.status === 200) {
+            if (response && response.status === 200) {
                 const $ = cheerio.load(response.data)
                 const element = $(".product-page")
 
@@ -104,8 +104,7 @@ const Services = {
         let url = q === undefined ? `${BASEURL}/anime?page=${page}` : `${BASEURL}/anime?search=${q}&page=${page}`
         try {
             const response = await service.fetchService(url, res)
-            console.log(response.status)
-            if (response.status === 200) {
+            if (response && response.status === 200) {
                 const $ = cheerio.load(response.data)
                 const element = $(".product-page")
                 let data = []
@@ -151,7 +150,7 @@ const Services = {
         let url = `${BASEURL}/anime/${id}/${name}`
         try {
             const response = await service.fetchService(url, res)
-            if (response.status === 200) {
+            if (response && response.status === 200) {
                 const $ = cheerio.load(response.data)
                 const infoElement = $(".anime__details__content__mobile")
                 let anime_detail = {}
@@ -239,7 +238,7 @@ const Services = {
         let url = `${BASEURL}/anime/${id}/${name}/episode/${no}?ZUWkUKnZTncFehk=Cx9RYfp10v&yAYKQ7YKMtEMUif=${server}&page=1`
         try {
             const response = await service.fetchService(url, res);
-            if(response.status === 200){
+            if (response && response.status === 200) {
                 const $ = cheerio.load(response.data)
                 const episodeElement = $('.breadcrumb-option')
                 const episodeDetailElement = $('.anime-details')
