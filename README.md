@@ -1,6 +1,6 @@
 
 # kuramanime-api
-this is my first time web scraping, all this data API from [Kuramanime](https://kuramanime.bid/).
+this is my first time web scraping, all this data API from [Kuramanime](https://kuramanime.red/).
 
 # Usage
 1. Clone this repository
