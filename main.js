@@ -4,6 +4,7 @@ const app = express()
 const route = require("./src/router/route")
 const { inject } = require('@vercel/analytics')
 
+// Init Vercel
 inject()
 
 app.use(cors())
