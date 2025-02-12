@@ -1,3 +1,3 @@
-const BASEURL = "https://kuramanime.red"
+const BASEURL = "https://v6.kuramanime.run"
 
 module.exports = BASEURL
