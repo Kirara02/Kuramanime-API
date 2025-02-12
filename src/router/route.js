@@ -1,6 +1,7 @@
 const router = require('express')
 const route =router.Router()
 const Services = require("../controllers/services")
+const BASEURL = require("../constant/url")
 
 route.get("/", (req, res) => {
     res.send({
@@ -11,6 +12,7 @@ route.get("/", (req, res) => {
             getAnimeDetail: "/api/v1/anime/:id/:name",
             getEpisodeDetail: "/api/v1/anime/:id/:name/episode/:no"
         },
+        url: BASEURL,
         documentation: "https://github.com/Kirara02/Kuramanime-API"
     })
 })
